@@ -1,6 +1,9 @@
 package main
 
-import "log"
+import (
+	"fmt"
+	"log"
+)
 
 func main() {
 
@@ -18,12 +21,24 @@ func main() {
 	pub.AddChannel("test", ch1)
 	pub.AddChannel("test2", ch2)
 
-	if err := pub.Send("HELLO!", "test"); err != nil {
+	if err := pub.Send("HELLO TO ALL CHANNELS!"); err != nil {
+		log.Fatalf("can't send: %s", err)
+	}
+
+	if err := pub.Send("HELLO TO CH1!", "test"); err != nil {
 		log.Fatalf("can't send: %s", err)
 	}
 
 	if err := pub.Send("HELLO FROM CH2", "test2"); err != nil {
 		log.Fatalf("can't send: %s", err)
+	}
+
+	if err := pub.RemoveChannel("test"); err != nil {
+		fmt.Println(err)
+	}
+
+	if err := pub.RemoveChannel("test"); err != nil {
+		fmt.Println(err)
 	}
 
 }

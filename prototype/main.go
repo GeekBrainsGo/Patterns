@@ -7,7 +7,8 @@ func main() {
 	a.N = &n
 
 	b := a.Copy()
-	b.N = 6
+	m := 6
+	b.N = &m
 
 }
 
@@ -16,7 +17,7 @@ type A struct {
 	A *A
 }
 
-func(a *A) Copy() A {
+func (a *A) Copy() A {
 	return A{
 		N: &(*a.N),
 	}

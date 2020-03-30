@@ -1,11 +1,11 @@
 package singleton
 
-var Single *singleton
+var Single1 *singleton
 
 type singleton struct {
 	Number int
 }
 
 func init() {
-	Single = &singleton{}
+	Single1 = &singleton{}
 }

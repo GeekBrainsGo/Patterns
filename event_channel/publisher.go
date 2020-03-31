@@ -48,6 +48,7 @@ func (p *Publisher) Send(msg string, channels ...string) error {
 			}
 			channel.Send(msg)
 		}
+
 	}
 	return nil
 }

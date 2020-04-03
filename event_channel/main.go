@@ -15,8 +15,10 @@ func main() {
 	ch2.Subscribe(user2)
 
 	pub := NewPublisher()
+	log.Println(pub.GetChannels())
 	pub.AddChannel("test", ch1)
 	pub.AddChannel("test2", ch2)
+	log.Println(pub.GetChannels())
 
 	if err := pub.Send("HELLO!", "test"); err != nil {
 		log.Fatalf("can't send: %s", err)
@@ -26,4 +28,12 @@ func main() {
 		log.Fatalf("can't send: %s", err)
 	}
 
+	if err := pub.Send("HELLO FROM ALL"); err != nil {
+		log.Fatalf("can't send: %s", err)
+	}
+
+	if err := pub.DelChannel("test2"); err != nil {
+		log.Fatalf("can't del channel: %s", err)
+	}
+	log.Println(pub.GetChannels())
 }

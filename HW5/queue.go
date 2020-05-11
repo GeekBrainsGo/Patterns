@@ -26,7 +26,9 @@ func (q *Queue) Get() (interface{}, error) {
 	if q.len <= 0 {
 		return nil, errors.New("empty queue")
 	}
+
 	n := q.head
+
 	if q.len == 1 {
 		q.head = nil
 		q.tail = nil
